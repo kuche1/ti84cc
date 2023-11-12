@@ -5,7 +5,7 @@ I only have a ti84+, so I don't know if this works with anything else (100% not 
 https://aur.archlinux.org/packages/ti84cc-git
 
 Tip: if you need to add any hex codes (example: lower case letters, tibasic instructions)
-you can add them on you calc then use tilp2 to transfer the program back to your PC then
+you can add them on your calc then use tilp2 to transfer the program back to your PC then
 open it in a hexedit and check the code
 
 
