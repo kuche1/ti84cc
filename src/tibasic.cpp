@@ -59,6 +59,8 @@ bool Compiler::compile(string inFile, string outFile)
         if(!tmpLine.length())
             continue;
 
+        // cout << "Line: " << tmpLine << '\n';
+
         // Parse.
         token_t token;
 
@@ -75,10 +77,23 @@ bool Compiler::compile(string inFile, string outFile)
                     s = s.substr(0, s.length() - 1);
             }
 
+            // hack the lower case letters
+            int token_is_a_lower_case_letter = 0;
+            unsigned short lower_case_letter_value = 0;
+
             // Special case for alphabet characters
             if(!s.length() && isalpha(tmpLine[0]))
             {
-                token.token = toupper(tmpLine[0]);
+                if((tmpLine[0] >= 'a') && (tmpLine[0] <= 'e')){ // if lower case letter
+                    token.token = 187;
+                    token_is_a_lower_case_letter = 1;
+                    lower_case_letter_value = 176 + (tmpLine[0] - 'a');
+                    if(tmpLine[0] >= 187){
+                        lower_case_letter_value += 1; // wel'll get `187 187` otherwise, so increase it by 1
+                    }
+                }else{
+                    token.token = toupper(tmpLine[0]);
+                }
                 token.sz = 1;
 
                 s = tmpLine.substr(0, 1);
@@ -95,6 +110,11 @@ bool Compiler::compile(string inFile, string outFile)
             {
                 outputSize += token.sz;
                 output.push_back(token);
+                if(token_is_a_lower_case_letter){
+                    token.token = lower_case_letter_value;
+                    outputSize += token.sz;
+                    output.push_back(token);
+                }
 
                 tmpLine = tmpLine.substr(s.length(), tmpLine.length());
             }
