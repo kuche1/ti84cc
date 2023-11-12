@@ -84,12 +84,12 @@ bool Compiler::compile(string inFile, string outFile)
             // Special case for alphabet characters
             if(!s.length() && isalpha(tmpLine[0]))
             {
-                if((tmpLine[0] >= 'a') && (tmpLine[0] <= 'e')){ // if lower case letter
+                if((tmpLine[0] >= 'a') && (tmpLine[0] <= 'z')){ // if lower case letter
                     token.token = 187;
                     token_is_a_lower_case_letter = 1;
                     lower_case_letter_value = 176 + (tmpLine[0] - 'a');
-                    if(tmpLine[0] >= 187){
-                        lower_case_letter_value += 1; // wel'll get `187 187` otherwise, so increase it by 1
+                    if(lower_case_letter_value >= 187){
+                        lower_case_letter_value += 1; // wel'll get `187 187` otherwise, so increase it by 1 (tibasic devs must be incredibly lazy)
                     }
                 }else{
                     token.token = toupper(tmpLine[0]);
