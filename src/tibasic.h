@@ -78,7 +78,7 @@ class Compiler
         Compiler() {}
         virtual ~Compiler() {}
 
-        bool compile(std::string inFile, std::string outFile);
+        bool compile(std::string inFile, std::string outFile, bool archive_program);
 
         bool decompile(std::string inFile, std::string outFile);
 

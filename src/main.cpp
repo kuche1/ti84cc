@@ -64,7 +64,11 @@ int main( int argc, char* argv[] )
 	if((argc < 2) || (argv[1] == NULL))
 	{
 		// Inform the user
-        log(Error, "Usage: tibasic.exe [options] filename\nOptions:\n\t-d\t\tDecompile\n\t-o filename\tOutput file");
+        log(Error, "Usage: tibasic.exe [options] filename\n"
+            "Options:\n"
+            "\t-d              Decompile\n"
+            "\t-o filename     Output file\n"
+            "\t-a              Sets the `archive` flag, so when you send the program to the calculator it will be archived");
 		return 1;
 	}
 
@@ -73,6 +77,7 @@ int main( int argc, char* argv[] )
     string inFile, outFile;
 
     bool bDecompile = false;
+    bool bArchive = false;
 
     // Parse arguments
     inFile = argv[argc - 1]; // Last argument is always filename
@@ -91,6 +96,8 @@ int main( int argc, char* argv[] )
         }
         else if(!strcmp(argv[i], "-d"))
             bDecompile = true;
+        else if(!strcmp(argv[i], "--"))
+            bArchive = true;
         else
         {
             log(Error, "Unknown option specified");
@@ -124,7 +131,7 @@ int main( int argc, char* argv[] )
         if(bDecompile)
             res = pCompiler->decompile(inFile, outFile);
         else
-            res = pCompiler->compile(inFile, outFile);
+            res = pCompiler->compile(inFile, outFile, bArchive);
 
         if(!res)
         {

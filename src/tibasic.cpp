@@ -26,6 +26,8 @@
 
 using namespace std;
 
+#define FLAG_SET_ARCHIVED 0x80
+
 /// \todo More error handling.
 
 unsigned short Compiler::doChecksum(size_t sum)
@@ -42,7 +44,7 @@ size_t Compiler::sumBytes(const char *data, size_t len)
     return ret;
 }
 
-bool Compiler::compile(string inFile, string outFile)
+bool Compiler::compile(string inFile, string outFile, bool archive_program)
 {
     ifstream f(inFile.c_str(), ifstream::in);
 
@@ -129,6 +131,9 @@ bool Compiler::compile(string inFile, string outFile)
         }
     }
 
+    // 8XP format explanation
+    // https://gist.github.com/SimonEast/244a0fd04526ea1acbec2e2ceb2e7924
+
     // Have the file read and parsed now. Time to write the output.
     struct ProgramHeader phdr; struct VariableEntry ventry;
     memset(&phdr, 0, sizeof(ProgramHeader));
@@ -143,6 +148,10 @@ bool Compiler::compile(string inFile, string outFile)
     ventry.start = 0x0D;
     ventry.length1 = ventry.length2 = outputSize + sizeof(outputSize);
     ventry.type = 0x05;
+
+    if(archive_program){
+        ventry.flags |= (char)FLAG_SET_ARCHIVED;
+    }
 
     // Convoluted magic to get the filename. Minus the extension. :)
     size_t i = 0;
