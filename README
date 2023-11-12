@@ -4,9 +4,17 @@ I only have a ti84+, so I don't know if this works with anything else (100% not 
 
 https://aur.archlinux.org/packages/ti84cc-git
 
-==========
-========== Old description
-==========
+Tip: if you need to add any hex codes (example: lower case letters, tibasic instructions)
+you can add then on you calc then use tilp2 to transfer the program back to your PC then
+open it in a hexedit and check the code
+
+
+
+
+# Old description
+
+
+
 
 == The TI-BASIC Compiler
 
