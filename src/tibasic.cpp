@@ -89,7 +89,7 @@ bool Compiler::compile(string inFile, string outFile)
                     token_is_a_lower_case_letter = 1;
                     lower_case_letter_value = 176 + (tmpLine[0] - 'a');
                     if(lower_case_letter_value >= 187){
-                        lower_case_letter_value += 1; // wel'll get `187 187` otherwise, so increase it by 1 (tibasic devs must be incredibly lazy)
+                        lower_case_letter_value += 1; // wel'll get `187 187` otherwise (and this probably stands for a 3B char), so increase it by 1
                     }
                 }else{
                     token.token = toupper(tmpLine[0]);
