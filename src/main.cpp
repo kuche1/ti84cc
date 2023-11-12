@@ -96,7 +96,7 @@ int main( int argc, char* argv[] )
         }
         else if(!strcmp(argv[i], "-d"))
             bDecompile = true;
-        else if(!strcmp(argv[i], "--"))
+        else if(!strcmp(argv[i], "-a"))
             bArchive = true;
         else
         {
