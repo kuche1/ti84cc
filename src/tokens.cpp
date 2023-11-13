@@ -46,7 +46,7 @@ struct ConvertRule {
 
 /// References to lists defined after functions.
 extern struct Token StandardTokens[199];
-extern struct TwoByte CalcVars[312];
+extern struct TwoByte CalcVars[313];
 extern struct ConvertRule Replacements[39];
 
 /// string -> token mapping
@@ -946,6 +946,7 @@ struct TwoByte CalcVars[] = {
 	{ 0x07EF,           "getDtStr("},
 	{ 0x00EF,           "setDate("},
 	{ 0x0AEF,           "getTime"},
+	{ 0x08EF,           "getTmStr("},
 	{ 0x01EF,           "setTime("},
 	{ 0x0BEF,           "startTmr"},
 	{ 0x02EF,           "checkTmr("},
