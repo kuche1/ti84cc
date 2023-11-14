@@ -105,6 +105,7 @@ bool Compiler::compile(string inFile, string outFile, bool archive_program)
             {
                 // Error, asplode!
                 log(Error, "Invalid token.");
+                cout << "Last line: `" << tmpLine << "`\n"; // TODO this sucks but I need something quickly
                 f.close();
                 return false;
             }
