@@ -46,7 +46,7 @@ struct ConvertRule {
 
 /// References to lists defined after functions.
 extern struct Token StandardTokens[199];
-extern struct TwoByte CalcVars[313];
+extern struct TwoByte CalcVars[314];
 extern struct ConvertRule Replacements[39];
 
 /// string -> token mapping
@@ -940,6 +940,7 @@ struct TwoByte CalcVars[] = {
 	// RAM/ROM
 	{ 0x68BB,           "Archive "},
 	{ 0x69BB,           "UnArchive "},
+	{ 0xCEBB,           "GarbageCollect"},
 
 	// date/time
 	{ 0x09EF,           "getDate"},
