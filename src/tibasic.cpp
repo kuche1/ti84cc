@@ -80,7 +80,7 @@ bool Compiler::compile(string inFile, string outFile, bool archive_program)
             }
 
             // hack the lower case letters
-            int token_is_a_lower_case_letter = 0;
+            bool token_is_a_lower_case_letter = false;
             unsigned short lower_case_letter_value = 0;
 
             // Special case for alphabet characters
@@ -88,7 +88,7 @@ bool Compiler::compile(string inFile, string outFile, bool archive_program)
             {
                 if((tmpLine[0] >= 'a') && (tmpLine[0] <= 'z')){ // if lower case letter
                     token.token = 187;
-                    token_is_a_lower_case_letter = 1;
+                    token_is_a_lower_case_letter = true;
                     lower_case_letter_value = 176 + (tmpLine[0] - 'a');
                     if(lower_case_letter_value >= 187){
                         lower_case_letter_value += 1; // wel'll get `187 187` otherwise (and this probably stands for a 3B char), so increase it by 1
@@ -105,7 +105,7 @@ bool Compiler::compile(string inFile, string outFile, bool archive_program)
             {
                 // Error, asplode!
                 log(Error, "Invalid token.");
-                cout << "Last line: `" << tmpLine << "`\n"; // TODO this sucks but I need something quickly
+                cout << "Last line: `" << tmpLine << "`\n"; // this sucks but I need something quickly
                 f.close();
                 return false;
             }
