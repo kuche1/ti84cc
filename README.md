@@ -8,13 +8,9 @@ Tip: if you need to add any hex codes (example: lower case letters, tibasic inst
 you can add them on your calc then use tilp2 to transfer the program back to your PC then
 open it in a hexedit and check the code
 
-
-
+I have also updated some of the tokens, for example what used to be ` or ` is now ` [or] `. See `tokens.cpp`.
 
 # Old description
-
-
-
 
 == The TI-BASIC Compiler
 

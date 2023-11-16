@@ -808,9 +808,9 @@ struct Token StandardTokens[] = {
 	{ FMAX,				"FMax("			},
 	{ CUBICREG,			"CubicReg "		},
 	{ QUARTREG,			"QuartReg "		},
-	{ LOGIC_OR,			" or "			},
-	{ LOGIC_XOR,		" xor "			},
-	{ LOGIC_AND,		"and"			},
+	{ LOGIC_OR,			" [or] "		}, // used to be ` or `
+	{ LOGIC_XOR,		" [xor] "		}, // used to be ` xor `
+	{ LOGIC_AND,		"[and]"			}, // used to be `and`
 	{ STR_THETA,		"[theta]"		},
 	{ PROGRAM,			"prgm"			},
 	{ RADIAN,			"Radian"		},
